@@ -20,6 +20,7 @@ import {
 } from "@yext/pages";
 import * as React from "react";
 import Banner from "../components/banner";
+import Services from "../components/Services";
 import Contact from "../components/contact";
 import Cta from "../components/cta";
 import Hours from "../components/hours";
@@ -27,6 +28,7 @@ import List from "../components/list";
 import PageLayout from "../components/page-layout";
 import StaticMap from "../components/static-map";
 import "../index.css";
+import {Breadcrumbs, Link} from '@mui/material';
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -140,7 +142,21 @@ const Location: Template<TemplateRenderProps> = ({
   return (
     <>
       <PageLayout _site={_site}>
-        <Banner name={name} address={address} openTime={openTime}>
+        <Breadcrumbs sx={{padding: '5px 5px 16px 230px'}} aria-label="breadcrumb">
+        <Link fontSize="20" underline="hover" color="inherit" href="/">
+          All Locations
+        </Link>
+        <Link underline="hover" color="inherit" href="/">
+          Gauteng
+        </Link>
+        <Link underline="hover" color="inherit" href="/">
+          Johannesburg
+        </Link>
+        <Link underline="hover" color="inherit" href="/">
+          Alberton
+        </Link>
+      </Breadcrumbs>
+      <Banner name={name} address={address} openTime={openTime}>
           <div className="bg-white h-40 w-1/5 flex items-center justify-center text-center flex-col space-y-4 rounded-lg">
             <div className="text-black text-base">Visit Us Today!</div>
             <Cta
@@ -150,6 +166,7 @@ const Location: Template<TemplateRenderProps> = ({
             />
           </div>
         </Banner>
+        <Services/>  
         <div className="centered-container">
           <div className="section">
             <div className="grid grid-cols-3 gap-x-10 gap-y-10">

@@ -1,4 +1,6 @@
 import * as React from "react";
+import {Box} from '@mui/material';
+import banner from "../assets/Header_1920x406.jpg";
 
 export type Address = {
   line1: string;
@@ -15,30 +17,20 @@ type Banner = {
   children?: React.ReactNode;
 };
 
-const renderPrettyAddress = (address?: Address) => {
-  return (
-    <>
-      {address && (
-        <span>
-          {address.line1} in {address.city}, {address.region}
-        </span>
-      )}
-    </>
-  );
-};
 
 const Banner = (props: Banner) => {
   const { name, address, children } = props;
 
   return (
     <>
-      <div className="bg-red-900 text-5xl font-bold text-white p-10 flex items-center justify-center flex-row space-x-20 w-full">
-        <div className="flex-col space-y-10 text-center">
-          <div>{name}</div>
-          <div>{renderPrettyAddress(address)}</div>
-        </div>
-        {children}
-      </div>
+    <Box
+      sx={{
+        backgroundImage: `url(${banner})`,
+        height: "400px",
+      }}
+    >
+
+    </Box>
     </>
   );
 };
