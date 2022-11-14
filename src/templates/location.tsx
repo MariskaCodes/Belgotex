@@ -21,6 +21,10 @@ import {
 import * as React from "react";
 import Banner from "../components/banner";
 import Services from "../components/Services";
+import Promotions from "../components/Promotions";
+import Info from "../components/Info";
+import FAQ from "../components/FAQ";
+import NearbyStores from "../components/NearbyStores";
 import Contact from "../components/contact";
 import Cta from "../components/cta";
 import Hours from "../components/hours";
@@ -28,7 +32,8 @@ import List from "../components/list";
 import PageLayout from "../components/page-layout";
 import StaticMap from "../components/static-map";
 import "../index.css";
-import {Breadcrumbs, Link} from '@mui/material';
+import { Breadcrumbs, Link } from '@mui/material';
+import {createTheme, ThemeProvider} from '@mui/material';
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -50,6 +55,7 @@ export const config: TemplateConfig = {
       "slug",
       "geocodedCoordinate",
       "services",
+      "c_services_test",
     ],
     // Defines the scope of entities that qualify for this stream.
     filter: {
@@ -72,9 +78,8 @@ export const config: TemplateConfig = {
 export const getPath: GetPath<TemplateProps> = ({ document }) => {
   return document.slug
     ? document.slug
-    : `${document.locale}/${document.address.region}/${document.address.city}/${
-        document.address.line1
-      }-${document.id.toString()}`;
+    : `${document.locale}/${document.address.region}/${document.address.city}/${document.address.line1
+    }-${document.id.toString()}`;
 };
 
 /**
@@ -114,6 +119,33 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
   };
 };
 
+
+// theme
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#2A2C2F',
+    },
+  },
+  typography: {
+    fontFamily: '"Gotham", sans-serif',
+    h1: {
+      fontSize: 50,
+      lineHeight: '35px',
+      letterSpacing: '-0.5px',
+      fontWeight: 900
+    },
+    h2: {
+      fontSize: 30,
+      fontWeight: 900
+    },
+    body1: {
+      fontSize: 20,
+    },
+  }
+});
+
+
 /**
  * This is the main template. It can have any name as long as it's the default export.
  * The props passed in here are the direct stream document defined by `config`.
@@ -137,36 +169,35 @@ const Location: Template<TemplateRenderProps> = ({
     mainPhone,
     geocodedCoordinate,
     services,
+    c_services_test,
   } = document;
+
+  console.log('document', document)
 
   return (
     <>
+     <ThemeProvider theme={theme}>
       <PageLayout _site={_site}>
-        <Breadcrumbs sx={{padding: '5px 5px 16px 230px'}} aria-label="breadcrumb">
-        <Link fontSize="20" underline="hover" color="inherit" href="/">
-          All Locations
-        </Link>
-        <Link underline="hover" color="inherit" href="/">
-          Gauteng
-        </Link>
-        <Link underline="hover" color="inherit" href="/">
-          Johannesburg
-        </Link>
-        <Link underline="hover" color="inherit" href="/">
-          Alberton
-        </Link>
-      </Breadcrumbs>
-      <Banner name={name} address={address} openTime={openTime}>
-          <div className="bg-white h-40 w-1/5 flex items-center justify-center text-center flex-col space-y-4 rounded-lg">
-            <div className="text-black text-base">Visit Us Today!</div>
-            <Cta
-              buttonText="Get Directions"
-              url="http://google.com"
-              style="primary-cta"
-            />
-          </div>
-        </Banner>
-        <Services/>  
+        <Breadcrumbs sx={{ padding: '5px 5px 16px 230px' }} aria-label="breadcrumb">
+          <Link fontSize="20" underline="hover" color="inherit" href="/">
+            All Locations
+          </Link>
+          <Link underline="hover" color="inherit" href="/">
+            Gauteng
+          </Link>
+          <Link underline="hover" color="inherit" href="/">
+            Johannesburg
+          </Link>
+          <Link underline="hover" color="inherit" href="/">
+            Alberton
+          </Link>
+        </Breadcrumbs>
+        <Banner name={name} address={address} openTime={openTime}/>
+        <Services name={name} services={c_services_test}/>
+        <Promotions/>
+        <Info />
+        <FAQ />
+        <NearbyStores />
         <div className="centered-container">
           <div className="section">
             <div className="grid grid-cols-3 gap-x-10 gap-y-10">
@@ -189,6 +220,7 @@ const Location: Template<TemplateRenderProps> = ({
           </div>
         </div>
       </PageLayout>
+      </ThemeProvider>
     </>
   );
 };

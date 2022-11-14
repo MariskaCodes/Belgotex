@@ -1,8 +1,13 @@
-import {Box, gridClasses, Typography} from '@mui/material';
-import banner from 'src/assets/Header_1920x406.jpg';
+import {Box, Typography} from '@mui/material';
 import React from 'react';
 
-const Services = () => {
+type ServicesProps = {
+  name?: string;
+  services?: string[];
+};
+
+
+const Services = (props: ServicesProps) => {
 
   // Business Logic
 
@@ -14,7 +19,7 @@ const Services = () => {
         maxWidth: '900px'
       }}
     >
-      <Typography padding={'0px 0px 16px 0px'} variant={'h1'}>John Dore Flooring Menlyn</Typography>
+      <Typography padding={'0px 0px 16px 0px'} variant={'h1'}>{props.name}</Typography>
       <Typography variant={'body1'}>
         Our story began in 1990 with Theo. JD established the company (then known as John Dore
         Carpeting) as a family business that primarily was involved in installations. JD has since
@@ -35,14 +40,8 @@ const Services = () => {
         <div>
           <Typography padding={'0px 0px 4px 0px'} variant={'h2'}>Services Offered</Typography>
           <Typography variant={'body1'}>
-            <ul>
-              <li>Flooring Installations</li>
-              <li>Flooring Maintenance</li>
-              <li>Carpets</li>
-              <li>Wood Laminates</li>
-              <li>Luxury Wood Vinyl</li>
-              <li>Rugs</li>
-              <li>Commercial Flooring</li>
+          <ul>
+            {props.services?.map(service => <li>{service}</li>)}
             </ul>
           </Typography>
         </div>
