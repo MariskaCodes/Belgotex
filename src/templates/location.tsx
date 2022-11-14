@@ -34,6 +34,7 @@ import StaticMap from "../components/static-map";
 import "../index.css";
 import { Breadcrumbs, Link } from '@mui/material';
 import {createTheme, ThemeProvider} from '@mui/material';
+import MapBox from "../components/MapBox";
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -195,6 +196,7 @@ const Location: Template<TemplateRenderProps> = ({
         <Banner name={name} address={address} openTime={openTime}/>
         <Services name={name} services={c_services_test}/>
         <Promotions/>
+        <MapBox/>
         <Info />
         <FAQ />
         <NearbyStores />
