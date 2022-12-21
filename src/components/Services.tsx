@@ -49,9 +49,7 @@ const Services = (props: ServicesProps) => {
           <Typography padding={'0px 0px 4px 0px'} variant={'h2'}>Payment Methods</Typography>
           <Typography variant={'body1'}>
             <ul>
-              <li>Cash</li>
-              <li>Card</li>
-              <li>Contactless Payment</li>
+            List
             </ul>
           </Typography>
         </div>
