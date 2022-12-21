@@ -32,8 +32,8 @@ import List from "../components/list";
 import PageLayout from "../components/page-layout";
 import StaticMap from "../components/static-map";
 import "../index.css";
-import { Breadcrumbs, Link } from '@mui/material';
-import {createTheme, ThemeProvider} from '@mui/material';
+import { Breadcrumbs, Link } from "@mui/material";
+import { createTheme, ThemeProvider } from "@mui/material";
 import MapBox from "../components/MapBox";
 
 /**
@@ -57,6 +57,7 @@ export const config: TemplateConfig = {
       "geocodedCoordinate",
       "services",
       "c_services_test",
+      "c_paymentMethod",
     ],
     // Defines the scope of entities that qualify for this stream.
     filter: {
@@ -79,8 +80,9 @@ export const config: TemplateConfig = {
 export const getPath: GetPath<TemplateProps> = ({ document }) => {
   return document.slug
     ? document.slug
-    : `${document.locale}/${document.address.region}/${document.address.city}/${document.address.line1
-    }-${document.id.toString()}`;
+    : `${document.locale}/${document.address.region}/${document.address.city}/${
+        document.address.line1
+      }-${document.id.toString()}`;
 };
 
 /**
@@ -120,32 +122,30 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
   };
 };
 
-
 // theme
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#2A2C2F',
+      main: "#2A2C2F",
     },
   },
   typography: {
     fontFamily: '"Gotham", sans-serif',
     h1: {
       fontSize: 50,
-      lineHeight: '35px',
-      letterSpacing: '-0.5px',
-      fontWeight: 900
+      lineHeight: "35px",
+      letterSpacing: "-0.5px",
+      fontWeight: 900,
     },
     h2: {
       fontSize: 30,
-      fontWeight: 900
+      fontWeight: 900,
     },
     body1: {
       fontSize: 20,
     },
-  }
+  },
 });
-
 
 /**
  * This is the main template. It can have any name as long as it's the default export.
@@ -171,57 +171,40 @@ const Location: Template<TemplateRenderProps> = ({
     geocodedCoordinate,
     services,
     c_services_test,
+    c_paymentMethod,
   } = document;
 
-  console.log('document', document)
+  console.log("document", document);
 
   return (
     <>
-     <ThemeProvider theme={theme}>
-      <PageLayout _site={_site}>
-        <Breadcrumbs sx={{ padding: '5px 5px 16px 230px' }} aria-label="breadcrumb">
-          <Link fontSize="20" underline="hover" color="inherit" href="/">
-            All Locations
-          </Link>
-          <Link underline="hover" color="inherit" href="/">
-            Gauteng
-          </Link>
-          <Link underline="hover" color="inherit" href="/">
-            Johannesburg
-          </Link>
-          <Link underline="hover" color="inherit" href="/">
-            Alberton
-          </Link>
-        </Breadcrumbs>
-        <Banner name={name} address={address} openTime={openTime}/>
-        <Services name={name} services={c_services_test}/>
-        <Promotions/>
-        <MapBox/>
-        <Info />
-        <FAQ />
-        <NearbyStores />
-        <div className="centered-container">
-          <div className="section">
-            <div className="grid grid-cols-3 gap-x-10 gap-y-10">
-              <div className="bg-gray-100 p-5 space-y-12">
-                <Contact address={address} phone={mainPhone}></Contact>
-                {services && <List list={services}></List>}
-              </div>
-              <div className="col-span-2 pt-5 space-y-10">
-                <div>
-                  {hours && <Hours title={"Restaurant Hours"} hours={hours} />}
-                </div>
-                {geocodedCoordinate && (
-                  <StaticMap
-                    latitude={geocodedCoordinate.latitude}
-                    longitude={geocodedCoordinate.longitude}
-                  ></StaticMap>
-                )}
-              </div>
-            </div>
-          </div>
-        </div>
-      </PageLayout>
+      <ThemeProvider theme={theme}>
+        <PageLayout _site={_site}>
+          <Breadcrumbs
+            sx={{ padding: "5px 5px 16px 230px" }}
+            aria-label="breadcrumb"
+          >
+            <Link fontSize="20" underline="hover" color="inherit" href="/">
+              All Locations
+            </Link>
+            <Link underline="hover" color="inherit" href="/">
+              Gauteng
+            </Link>
+            <Link underline="hover" color="inherit" href="/">
+              Johannesburg
+            </Link>
+            <Link underline="hover" color="inherit" href="/">
+              Alberton
+            </Link>
+          </Breadcrumbs>
+          <Banner name={name} address={address} openTime={openTime} />
+          <Services name={name} services={c_services_test} />
+          <Promotions />
+          <MapBox />
+          <Info />
+          <FAQ />
+          <NearbyStores />
+        </PageLayout>
       </ThemeProvider>
     </>
   );

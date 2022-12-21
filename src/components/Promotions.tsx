@@ -3,7 +3,7 @@ import {Box, Button, Typography} from '@mui/material';
 import Carousel from 'react-material-ui-carousel';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import banner from '../assets/Header_1920x406.jpg';
+import banner from '../assets/PromoOne.png';
 
 const Promotions = () => {
 
@@ -70,7 +70,7 @@ const Banner = (props: BannerProps) => {
       <Box
         sx={{
           backgroundImage: `url(${banner})`,
-          height: '400px',
+          height: '616px',
         }}
       >
       </Box>

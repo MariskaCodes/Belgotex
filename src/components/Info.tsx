@@ -1,6 +1,6 @@
 import {Box, Typography} from '@mui/material';
 import React from 'react';
-import PromoOne from '../assets/PromoOne.png';
+import ProductOne from '../assets/ProductOne.png';
 import Button from '@mui/material/Button';
 
 const Info = () => {
@@ -52,7 +52,7 @@ const InfoImage = (props: InfoImageProps) => {
     <Box>
       <Box
         sx={{
-          backgroundImage: `url(${PromoOne})`,
+          backgroundImage: `url(${ProductOne})`,
           height: '250px',
           borderRadius: '10px',
           margin: '10px',
@@ -62,7 +62,7 @@ const InfoImage = (props: InfoImageProps) => {
       </Box>
       <Typography variant={'h3'} sx={{padding: '10px 0px 10px 20px', textAlign: 'left'}}>{props.heading}</Typography>
       <Typography variant={'body1'} sx={{padding: '10px 0px 10px 20px', textAlign: 'left'}}>{props.text}</Typography>
-      <Button variant={'contained'}>View Range</Button>
+      <Button variant="contained">Contained</Button>
     </Box>
   )
 }
