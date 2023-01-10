@@ -25,7 +25,7 @@ const Footer = () => {
           justifyContent: 'center'
         }}
       >
-        <Typography variant={'caption'}>Designed by Soace</Typography>
+        <Typography variant={'caption'}>Designed by Sauce Advertising</Typography>
       </Box>
       <div>
         <Button>Top</Button>
