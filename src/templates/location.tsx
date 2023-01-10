@@ -41,7 +41,9 @@ import MapBox from "../components/MapBox";
  */
 export const config: TemplateConfig = {
   stream: {
-    $id: "my-stream-id-1",
+    $id: "3800743",
+    //source: "knowledgeGraph",
+    destination: "pages",
     // Specifies the exact data that each generated document will contain. This data is passed in
     // directly as props to the default exported function.
     fields: [
@@ -62,6 +64,9 @@ export const config: TemplateConfig = {
     // Defines the scope of entities that qualify for this stream.
     filter: {
       entityTypes: ["location"],
+      entityIds: ["10"],
+      //M added this entityIds:
+      //M added this savedFilterIds:
     },
     // The entity language profiles that documents will be generated for.
     localization: {

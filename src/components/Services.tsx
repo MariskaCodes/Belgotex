@@ -1,5 +1,6 @@
 import {Box, Typography} from '@mui/material';
 import React from 'react';
+import paymentMethod from './paymentMethod';
 
 type ServicesProps = {
   name?: string;
@@ -49,7 +50,7 @@ const Services = (props: ServicesProps) => {
           <Typography padding={'0px 0px 4px 0px'} variant={'h2'}>Payment Methods</Typography>
           <Typography variant={'body1'}>
             <ul>
-            List
+            {props.paymentMethod?.map(paymentMethod => <li>{paymentMethod}</li>)}
             </ul>
           </Typography>
         </div>
